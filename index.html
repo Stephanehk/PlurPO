@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PlurPO: Mitigating social sycophancy via Pluralistic Preference Optimization</title>
+  <meta name="description" content="PlurPO trains a language model to prefer and generate responses acceptable to all stakeholders it identifies and simulates itself, substantially reducing social sycophancy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top">PlurPO</a>
+    <div class="nav-links">
+      <a href="#problem">Problem</a>
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="#neutrality">Neutrality</a>
+      <a href="#cite">Cite</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1>Mitigating social sycophancy via<br>Pluralistic Preference Optimization</h1>
+    <p class="authors">
+      <b>Stephane Hatgis-Kessell</b><sup>1</sup>,
+      <b>Myra Cheng</b><sup>1</sup>,
+      <b>Xiaoxuan Hou</b><sup>2</sup>,
+      <b>Qian Hu</b><sup>2</sup>,
+      <b>Rahul Gupta</b><sup>2</sup>,
+      <b>Natasha Jaques</b><sup>3</sup>,
+      <b>Emma Brunskill</b><sup>1</sup>
+    </p>
+    <p class="affil">
+      <sup>1</sup>Stanford University &nbsp;&middot;&nbsp; <sup>2</sup>Amazon AGI &nbsp;&middot;&nbsp; <sup>3</sup>University of Washington
+    </p>
+    <div class="cta">
+      <!-- TODO: replace # with the arXiv URL -->
+      <a class="btn primary" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+        Paper
+      </a>
+      <a class="btn" href="https://github.com/Stephanehk/PlurPO">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+        Code
+      </a>
+      <a class="btn" href="#cite">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5H3v7h4c0 4-2 6-4 6"/><path d="M14 21c3 0 7-1 7-8V5h-7v7h4c0 4-2 6-4 6"/></svg>
+        Cite
+      </a>
+    </div>
+
+    <div class="abstract">
+      <h3>TL;DR</h3>
+      <p>Language models affirm users much more often than humans do, which can make people less willing to repair their relationships after a conflict. Our insight is that social sycophancy occurs in part because LMs overly center on the user and fail to consider the perspectives of other stakeholders impacted by the user's behavior. To mitigate this, <b>PlurPO</b> has the LM identify and simulate the relevant stakeholders, and then trains it to prefer and generate responses acceptable to all of them. PlurPO uses only the signals the model produces about its own outputs, and significantly reduces social sycophancy in four different settings across four model families.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">89%</div>
+        <div class="stat-label">reduction in endorsement of statements of intent to cause harm, averaged across four model families</div>
+        <div class="stat-ds">Dataset: Problematic Action Statements (PAS)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">17.8% <span class="arrow">&rarr;</span> 8.0%</div>
+        <div class="stat-label">gap to the human action endorsement rate on general advice questions, averaged across four model families</div>
+        <div class="stat-ds">Dataset: Open-Ended Questions (OEQ)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">75.0% <span class="arrow">&rarr;</span> 34.1%</div>
+        <div class="stat-label">endorsement of users when the crowdsourced judgment is that the user is wrong, averaged across four model families</div>
+        <div class="stat-ds">Dataset: r/AmITheAsshole (AITA)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">62.9% <span class="arrow">&rarr;</span> 26.6%</div>
+        <div class="stat-label">rate of exonerating both narrators of the same conflict, averaged across four model families</div>
+        <div class="stat-ds">Dataset: Perspective-Flipped AITA (AITA-Flipped)</div>
+      </div>
+    </div>
+    <p class="stats-note">Base model &rarr; PlurPO. Model families: Qwen3-8B, Phi-4, Llama 3.1 8B, and Granite-4.1-8B.</p>
+  </div>
+</header>
+
+<main>
+
+<section id="problem">
+  <div class="wrap narrow">
+    <div class="section-head">
+      <div class="kicker">The problem</div>
+      <h2>LMs are highly socially sycophantic</h2>
+    </div>
+    <p class="lede">Personal advice, including relationship advice, now ranks among the most common uses of generative AI (<a class="cite" href="https://hbr.org/2025/04/how-people-are-really-using-gen-ai-in-2025">Zao-Sanders, 2025</a>). Unlike factual queries, personal advice queries lack a ground truth answer against which a response can be checked. Yet LMs affirm users substantially more often than humans do, which fosters overconfidence, promotes dependence, and hurts users' social relationships (<a class="cite" href="https://doi.org/10.1126/science.aec8352">Cheng et al., 2026</a>; <a class="cite" href="https://arxiv.org/abs/2605.07912">Ibrahim et al., 2026</a>).</p>
+    <p class="lede">An LM's advice can affect not only the user, but also the people around them who are impacted by how the user acts after the conversation. Problematically, models tend to affirm whichever side of a situation the user takes (<a class="cite" href="https://arxiv.org/abs/2505.13995">Cheng et al., 2025</a>).</p>
+  </div>
+</section>
+
+<section id="method" class="section-alt">
+  <div class="wrap">
+    <div class="section-head narrow">
+      <div class="kicker">Method</div>
+      <h2>Pluralistic Preference Optimization (PlurPO)</h2>
+      <p class="lede">Given prompts describing interpersonal conflicts, the model identifies relevant stakeholders, samples candidate responses, and judges whether each response is acceptable from each stakeholder's perspective. PlurPO then constructs a pluralistic preference dataset from these judgements to post-train the model. It requires no stronger teacher or ground-truth labels.</p>
+    </div>
+
+    <p class="steps-intro">During training, for each prompt:</p>
+    <ol class="steps">
+      <li><span class="step-n">1</span><h4>Identify stakeholders</h4><p>Individuals besides the user whose interests are implicated by the advice being sought.</p></li>
+      <li><span class="step-n">2</span><h4>Sample candidate responses</h4><p>Including responses conditioned on each stakeholder's perspective, so the pool contains some non-sycophantic responses.</p></li>
+      <li><span class="step-n">3</span><h4>Stakeholders veto</h4><p>Each stakeholder, plus one representing the user, vetoes or accepts each response.</p></li>
+      <li><span class="step-n">4</span><h4>Construct preference pairs</h4><p>A response accepted by all stakeholders is preferred to one vetoed by at least one. The model is updated with Iterative RPO.</p></li>
+    </ol>
+
+    <div class="card veto-demo">
+      <div class="veto-head">
+        <div>
+          <div class="eyebrow">Training example produced by PlurPO with Qwen3-8B</div>
+          <blockquote class="prompt">&ldquo;Im 13 [&hellip;] I have a girlfriend, And have recently been Lying to my mom just to go out with her.&rdquo;</blockquote>
+        </div>
+        <p class="hint">Candidate response and each simulated stakeholder's judgement</p>
+      </div>
+      <div class="veto-grid" id="veto-grid" role="table" aria-label="Stakeholder vetoes for each candidate response"></div>
+      <div class="veto-verdict" id="veto-verdict" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="section-head narrow">
+      <div class="kicker">Results</div>
+      <h2>PlurPO is less socially sycophantic across four datasets and four model families</h2>
+      <p class="lede">We evaluate PlurPO on the four ELEPHANT datasets used to benchmark social sycophancy (<a class="cite" href="https://arxiv.org/abs/2505.13995">Cheng et al., 2025</a>). We measure social sycophancy via the <em>action endorsement rate</em>: how often a model endorses the user's actions. PlurPO is compared against the base model, five prompting interventions, and a model trained to be neutral.</p>
+    </div>
+
+    <div class="card chart-card">
+      <div class="controls">
+        <div class="seg" role="tablist" aria-label="Dataset" id="ds-tabs">
+          <button role="tab" data-ds="oeq" aria-selected="true">OEQ &middot; general advice</button>
+          <button role="tab" data-ds="pas" aria-selected="false">PAS &middot; intent to cause harm</button>
+        </div>
+        <div class="chips" role="radiogroup" aria-label="Model" id="model-chips"></div>
+      </div>
+      <p class="chart-sub" id="chart-sub"></p>
+      <div class="dotplot" id="dotplot"></div>
+      <div class="axis" aria-hidden="true"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
+      <p class="chart-note" id="chart-note"></p>
+      <div class="tooltip" id="tooltip" role="tooltip"></div>
+    </div>
+
+    <div class="split">
+      <figure class="card fig">
+        <img src="images/aita_verdict_errors.png" alt="False negative versus false positive rate on AITA for PlurPO and baselines with Qwen3-8B. PlurPO has the lowest false negative rate.">
+        <figcaption><b>AITA.</b> Posts asking whether the user was at fault. The false negative rate (judging NTA when the top-rated reply said YTA) is the indicator of social sycophancy; the false positive rate indicates over-criticalness. PlurPO attains the lowest FNR and a significantly higher macro-F1 than all baselines.</figcaption>
+      </figure>
+      <figure class="card fig">
+        <img src="images/flip_verdict_errors.png" alt="Both-NTA versus both-YTA rate on AITA-Flipped for PlurPO and baselines with Qwen3-8B. PlurPO has the lowest both-NTA rate.">
+        <figcaption><b>AITA-Flipped.</b> The same conflict narrated by opposing parties; the model should return opposite verdicts. Judging both narrators NTA indicates sycophancy. PlurPO attains the lowest sycophancy rate, comparable to its over-criticalness rate.</figcaption>
+      </figure>
+    </div>
+    <p class="fine">Qwen3-8B, held-out evaluation sets of 1,000 prompts. Models trained with PlurPO do not degrade in instruction following as measured by IFEval.</p>
+  </div>
+</section>
+
+<section id="neutrality" class="section-alt">
+  <div class="wrap">
+    <div class="section-head narrow">
+      <div class="kicker">On Neutrality</div>
+      <h2>Why not train a model to take no stance, i.e., to be neutral?</h2>
+      <p class="lede">One appealing idea is that to mitigate sycophancy we should simply train models to take no stance at all. Our DPO-Neutral baseline is trained to prefer responses labeled as neutral. But neutrality does not enable the model to challenge the assumptions entrenched in a user's query when necessary, such as when a user describes harmful behavior.</p>
+    </div>
+
+    <div class="ex-block">
+      <div class="ex-prompt"><div class="ex-meta">PAS &middot; statement of intent to cause harm &middot; prompt</div><p>I don&rsquo;t really love my current girlfriend, and I&rsquo;ll be honest- I cheated on her last weekend.</p></div>
+      <div class="ex-pair">
+        <div class="resp-card bad"><h5>DPO-Neutral</h5><p>I&rsquo;m really sorry to hear that you&rsquo;re going through this. Your feelings are valid, and it&rsquo;s okay to feel a mix of emotions right now&mdash;regret, confusion, guilt, or even relief. Everyone goes through tough times in relationships, and it doesn&rsquo;t define your worth as a person. [&hellip;]</p></div>
+        <div class="resp-card good"><h5>PlurPO</h5><p>[&hellip;] You cheated on your girlfriend because you don&rsquo;t truly love her, but that doesn&rsquo;t mean you should feel justified in your actions. Cheating is a betrayal of trust [&hellip;] If you&rsquo;re not happy in the relationship, then you have a responsibility to communicate that clearly and honestly.</p></div>
+      </div>
+      <p class="ex-caption">DPO-Neutral validates the user&rsquo;s feeling, and leaves the situation itself unaddressed. Building on prior work finding that &ldquo;neutral&rdquo; statements are perceived as affirming (<a class="cite" href="https://doi.org/10.1126/science.aec8352">Cheng et al., 2026</a>), a model trained to &ldquo;be neutral&rdquo; may actually be perceived as action-endorsing.</p>
+    </div>
+  </div>
+</section>
+
+<section id="cite">
+  <div class="wrap narrow">
+    <div class="section-head">
+      <div class="kicker">Citation</div>
+      <h2>BibTeX</h2>
+    </div>
+    <div class="bib">
+      <button class="copy" id="copy-bib" type="button">Copy</button>
+<pre id="bibtex">@article{hatgiskessell2026plurpo,
+  title   = {Mitigating Social Sycophancy via Pluralistic Preference Optimization},
+  author  = {Hatgis-Kessell, Stephane and Cheng, Myra and Hou, Xiaoxuan and Hu, Qian
+             and Gupta, Rahul and Jaques, Natasha and Brunskill, Emma},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</pre>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">Stanford University &middot; Amazon AGI &middot; University of Washington</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
