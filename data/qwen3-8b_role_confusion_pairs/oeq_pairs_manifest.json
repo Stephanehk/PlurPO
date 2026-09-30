@@ -1,0 +1,35 @@
+{
+  "n_candidates": 10000,
+  "n_labelled": 10000,
+  "label_counts": {
+    "-1": 1,
+    "0": 9512,
+    "2": 487
+  },
+  "n_prompts_seen": 1000,
+  "n_prompts_contributing": 256,
+  "n_prompts_dropped_no_failure": 744,
+  "n_prompts_dropped_no_clean": 0,
+  "n_prompts_hit_pair_cap": 0,
+  "n_truncated_dropped": 309,
+  "max_pairs_per_prompt": 10,
+  "require_finished": true,
+  "seed": 0,
+  "n_pairs": 448,
+  "chosen_length": {
+    "n": 448,
+    "mean_chars": 3940.7,
+    "median_chars": 4340.5
+  },
+  "rejected_length": {
+    "n": 448,
+    "mean_chars": 3830.1,
+    "median_chars": 4585.5
+  },
+  "release_clean": {
+    "n_raw": 448,
+    "n_removed_error_sentinel": 0,
+    "n_removed_heldout_leak": 0,
+    "n_clean": 448
+  }
+}

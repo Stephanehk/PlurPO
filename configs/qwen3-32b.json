@@ -1,0 +1,49 @@
+{
+  "_comment": "Qwen3-32B trained on the Qwen3-8B stage-1 pairs (data/plurpo_qwen3-8b_pairs): one offline RPO epoch over all three 8B epochs' pairs from a fresh LoRA, then the role-confusion stage sampled from and judged by Qwen3-32B itself.",
+  "model_id": "Qwen/Qwen3-32B",
+  "lora_target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+  ],
+  "offline_stage1": {
+    "rpo_alpha": 0.5,
+    "beta": 0.1,
+    "learning_rate": 5e-05,
+    "grad_accum": 8,
+    "max_length": 3072,
+    "precompute_ref_batch_size": 8,
+    "dpo_seed": 0,
+    "num_train_epochs": 1,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "device_map": {
+      "OEQ": null,
+      "PAS": null,
+      "AITA": "auto",
+      "AITA-NTA-FLIP": "auto"
+    }
+  },
+  "role_confusion": {
+    "n": 10,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "max_tokens": 1536,
+    "seed": 0,
+    "max_pairs_per_prompt": 10,
+    "rpo_alpha": 0.5,
+    "beta": 0.1,
+    "learning_rate": 5e-05,
+    "grad_accum": 8,
+    "max_length": 3072,
+    "precompute_ref_batch_size": 2,
+    "dpo_seed": 0,
+    "max_model_len": 8192,
+    "device_map": "auto"
+  }
+}

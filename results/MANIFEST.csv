@@ -1,0 +1,47 @@
+path,bytes,sha256,origin
+.DS_Store,8196,470efb6894958a04f2e89a562f5c5d64919faf3bdffefdfce9ff9119f5957ac4,
+README.md,8473,ef3066adf904c9353faf9bff0cdd41a51e209daf89ac9638cb6170b52d1fb228,written for this release
+_provenance/build_results.py,11867,d35bfc3d0593293e054d9ef487a70258988bb1414b674fa156c4568cc94f382e,written for this release
+_provenance/elephant_join.py,8913,b2bf3fcb03a682bb4eebfadd98750201485743eea5055d7398fff838a0d16e46,written for this release
+_provenance/registry.py,7232,e4572aa17eebde8e6cc3c04a0c1fa800201ce84f1b9014a18cad4c4eec4c703e,written for this release
+_provenance/write_manifest.py,1755,5f0bb334f20fde15d7edf77acfd1bf055a99aa90a6608b55f1cbd105b288e10a,written for this release
+arms.csv,4415,86d28ce107ab23b00298744651707fba598436ea35baea4fd41e0dbd56545a5a,written for this release
+qwen3-8b/AITA-NTA-FLIP/base.csv,7369429,5323aee98bda415f735445468eec31454964bbef35dbb971e1b9fa8db2d184b9,"built from baseline_final_AITA-NTA-FLIP/eval (inloop gate, tag base_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA-NTA-FLIP/becritical.csv,8466457,1a7e1515db0f69230e4aa8f1842ffc56cc8fd7cf58a7929cbfebe5c6144b0c8e,"built from baseline_final_AITA-NTA-FLIP/eval (inloop gate, tag base-becritical_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA-NTA-FLIP/dontbesyco.csv,5289947,4376767c396ab891ddec0007df9c5cfa5bab49c92deb864c9423aaa44c61ebab,"built from baseline_final_AITA-NTA-FLIP/eval (inloop gate, tag base-dontbesyco_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA-NTA-FLIP/explicit.csv,7490936,dacf574e19a76754604a97e2fe4fdbc87bae52eab1b5ceeb98b7de18c53c8327,"built from baseline_final_AITA-NTA-FLIP/eval (inloop gate, tag base-explicit_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA-NTA-FLIP/perspshift.csv,9014044,89b0e353fd290315af9a3215b3df376151fb8e699543bc1e8ad686977989e905,"built from baseline_final_AITA-NTA-FLIP/eval (inloop gate, tag base-perspshiftassess_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA-NTA-FLIP/plurpo.csv,6693882,3f32ec568edeea6576261613bfc14469151721c13b7b8122aae5861dc1c88f55,"built from dpo_lora_flip_qwen3-8b_P6_voice2R2_rpo0p5/eval (staged gate, tag final_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA-NTA-FLIP/sharma.csv,5540086,16a5792257c2c32c68dadbf8bdd5ccf4f6915c7f713060ff8e28dfaa81e41cc8,"built from baseline_final_AITA-NTA-FLIP/eval (inloop gate, tag base-sharma_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA/base.csv,3532114,5ee7fd0ab6a3814194b54829e1a1e50ba3ba836b329905ddd3bb2b63da4b09c7,"built from baseline_final_AITA/eval (inloop gate, tag base_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA/becritical.csv,4073763,87f3c0f90f1a1fc46e7683834d166bf7ac2f4f920d1cd09705baa2717e05dd40,"built from baseline_final_AITA/eval (inloop gate, tag base-becritical_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA/dontbesyco.csv,2912373,e6239e1d1d4a3e762042dd3c115118544cd26268e26fcc1eb3e5fe6260b52731,"built from baseline_final_AITA/eval (inloop gate, tag base-dontbesyco_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA/explicit.csv,3719150,59288d9c09d09464e1b45a6d934ff12653d6a9b0f43394ac8b52711675587c68,"built from baseline_final_AITA/eval (inloop gate, tag base-explicit_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA/perspshift.csv,4428237,219714a9d7b5b4f79afdf2a70dd4a05719fa0aa999559f6220825209190719a6,"built from baseline_final_AITA/eval (inloop gate, tag base-perspshiftassess_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA/plurpo.csv,2354488,767d92715c2b1613f451a8121a9b9df4829c12c9fe1214682798fcfe2824afb3,"built from dpo_lora_aita_qwen3-8b_P6_voice2R2_rpo0p5/eval (staged gate, tag final_finaldata_temp1.0_seed0)"
+qwen3-8b/AITA/sharma.csv,2867326,454ec1938bf060fb533bbde8262ce4ad271186de35b56392859c9d5402d9af82,"built from baseline_final_AITA/eval (inloop gate, tag base-sharma_finaldata_temp1.0_seed0)"
+qwen3-8b/OEQ/base.csv,2307403,6a524c48438b93925b0f12be08bd2740b49237d7765e6fc0f75dfe1ac7fd757a,"built from baseline_final_OEQ/eval (inloop gate, tag base_finaldata_temp1.0_seed0)"
+qwen3-8b/OEQ/becritical.csv,2304670,c2094bb7bc4188ab7204ebd114e4710dfb47d181276c257707ae5b34f3e5eb4e,"built from baseline_final_OEQ/eval (inloop gate, tag base-becritical_finaldata_temp1.0_seed0)"
+qwen3-8b/OEQ/dontbesyco.csv,2236363,d98853dde8e5e44c7d0a9935c423f3cbcb8fc2e712f5875592a4bfea1ea9c9f3,"built from baseline_final_OEQ/eval (inloop gate, tag base-dontbesyco_finaldata_temp1.0_seed0)"
+qwen3-8b/OEQ/dpo_neutral.csv,2266519,51b33917f83bd0076d9666d45db87214310c6f4637b265d4decd92a2a4312f69,"built from dpo_lora_oeq_qwen3-8b_n1000_neutral_mixed_final/eval (inloop gate, tag final_finaldata_temp1.0_seed0)"
+qwen3-8b/OEQ/dpo_neutral_nonmixed.csv,2330452,605609b460b97d2308b75bf245afa853c0fab0ff3d5c00f1383a29f11b85432a,"built from dpo_lora_oeq_qwen3-8b_n1000_neutral_final/eval (inloop gate, tag final_finaldata_temp1.0_seed0)"
+qwen3-8b/OEQ/explicit.csv,2360264,d66ebe99e1f00dc9e057ff0055bab45117072c094ae390ff55d115c6497e6891,"built from baseline_final_OEQ/eval (inloop gate, tag base-explicit_finaldata_temp1.0_seed0)"
+qwen3-8b/OEQ/human.csv,523381,1eabb6e3eeb14d106bfcc45e21c6b568f22b297fcf136a91d79d969fbd3f1dd3,built from OEQ human responses
+qwen3-8b/OEQ/perspshift.csv,2272443,e4c71bceed77546ce5a0d2f902f15ae210e168d9fa0d4b8a9a93a08fb508d9bd,"built from baseline_final_OEQ/eval (inloop gate, tag base-perspshiftassess_finaldata_temp1.0_seed0)"
+qwen3-8b/OEQ/plurpo.csv,2170470,abc7db1768d7440006018b7318c81785f97861d7684588a341020e3f9c511604,"built from dpo_lora_oeq_qwen3-8b_P6_voice2_rpo0p5/eval (inloop gate, tag final_finaldata_temp1.0_seed0)"
+qwen3-8b/OEQ/plurpo_stage1.csv,2115814,5cb1f16af6bf83d69583ffe4b3134199d5e87e7449ee4cb7ace37fa16eadb8fc,"built from dpo_lora_oeq_qwen3-8b_n1000_mixed_P6_perspshift_distill_gp_rpo0p5_final/eval (inloop gate, tag final_finaldata_temp1.0_seed0)"
+qwen3-8b/OEQ/sharma.csv,2318843,74184ddfd5930e3dbd275ada0a96890e12dc86ad08631549d4213aefdef2d569,"built from baseline_final_OEQ/eval (inloop gate, tag base-sharma_finaldata_temp1.0_seed0)"
+qwen3-8b/PAS/base.csv,1699526,dff2596f2b7475741314b12de232e62c40f233cabf30006e3a8f3ba20afaa209,"built from baseline_final_PAS/eval (inloop gate, tag base_finaldata_temp1.0_seed0)"
+qwen3-8b/PAS/becritical.csv,2208904,cf39dea0e518b5c95794d82d7eca37986b9f3c963ee2be72e2589ae67f684cfe,"built from baseline_final_PAS/eval (inloop gate, tag base-becritical_finaldata_temp1.0_seed0)"
+qwen3-8b/PAS/dontbesyco.csv,1020695,e74e54147471a4de82d18b9b55499153298dcdc846fa5390e765166375720a80,"built from baseline_final_PAS/eval (inloop gate, tag base-dontbesyco_finaldata_temp1.0_seed0)"
+qwen3-8b/PAS/dpo_neutral.csv,1206787,d81fa762bb6efb00b698ee1adebc85367334049396201d2b4de3d622e17a0048,"built from dpo_lora_pas_qwen3-8b_n1000_neutral_mixed_final/eval (inloop gate, tag final_finaldata_temp1.0_seed0)"
+qwen3-8b/PAS/dpo_neutral_nonmixed.csv,1854336,466278781d3001b23b9482cc1f90aac7d87a3b2f5ff6bd50916f9b8d304db8c6,"built from dpo_lora_pas_qwen3-8b_n1000_neutral_final/eval (inloop gate, tag final_finaldata_temp1.0_seed0)"
+qwen3-8b/PAS/explicit.csv,1910268,03ff8ed3e1c41b81bfa47d52fc9e876c48202ada92d5fd0737b2dc9e2e828a9c,"built from baseline_final_PAS/eval (inloop gate, tag base-explicit_finaldata_temp1.0_seed0)"
+qwen3-8b/PAS/perspshift.csv,1737708,89cd0c47e6199c77fec2f694b24deb8815c5206bcbabbbbd41fc574a6baa0f65,"built from baseline_final_PAS/eval (inloop gate, tag base-perspshiftassess_finaldata_temp1.0_seed0)"
+qwen3-8b/PAS/plurpo.csv,713332,0c67d55f683198c539039089e43830b147ba399c90ba11bf247dd97e39c9c733,"built from dpo_lora_pas_qwen3-8b_P6_voice2_rpo0p5/eval (inloop gate, tag final_finaldata_temp1.0_seed0)"
+qwen3-8b/PAS/plurpo_stage1.csv,713265,00cb2adabb1356d33eb37945562839d47ec8301e8426a406fdf3778e3c930de9,"built from dpo_lora_pas_qwen3-8b_n1000_mixed_P6_perspshift_distill_gp_rpo0p5_final/eval (inloop gate, tag final_finaldata_temp1.0_seed0)"
+qwen3-8b/PAS/sharma.csv,1290420,582759a35b0653403e269dbf62b443cc03315cfd8ecd275424f39357e2b37c32,"built from baseline_final_PAS/eval (inloop gate, tag base-sharma_finaldata_temp1.0_seed0)"
+veto_vs_endorse/iter1_labels.csv,2007133,0e5c79670ed3cd3ac14ec5ca19a231e6980add0bfd36fb12599f8c3d3f419721,copy of <research>/_veto_endorse_probe_qwen_oeq/
+veto_vs_endorse/iter2_labels.csv,1961265,1cabb8093b2badd508a59f071f8bb0569905a3f6ffe46a0175349c414e955af4,copy of <research>/_veto_endorse_probe_qwen_oeq/
+veto_vs_endorse/iter3_labels.csv,1916491,403d742c1c95ac627d00548cde11efe0875ec0db5097ee45e56696c0a541e0b8,copy of <research>/_veto_endorse_probe_qwen_oeq/
+veto_vs_endorse/summary.json,1396,76fd512968aac0d6707282be24f4b66018bdb25e2d15e547dff8f2b6df5ee9ca,copy of <research>/_veto_endorse_probe_qwen_oeq/

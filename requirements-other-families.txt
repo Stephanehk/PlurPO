@@ -1,0 +1,17 @@
+# Environment used to TRAIN AND SAMPLE Phi-4, Llama-3.1-8B-Instruct and
+# Granite-4.1-8B (App. "Training other models with PlurPO"); Granite-4.1 needs
+# the newer transformers/vLLM. Python 3.12, CUDA 13.0. Judging and analysis for
+# these models used requirements.txt.
+#   pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cu130
+#   pip install -r requirements-other-families.txt
+transformers==5.14.1
+trl==1.9.0
+peft==0.19.1
+accelerate==1.14.0
+datasets==5.0.0
+tokenizers==0.22.2
+safetensors==0.8.0
+vllm==0.25.1
+openai==2.48.0
+numpy==2.3.5
+pandas==3.0.5

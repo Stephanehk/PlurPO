@@ -1,0 +1,44 @@
+{
+  "final_seed": 20260710,
+  "envs": {
+    "OEQ": {
+      "pool_total": 3010,
+      "pool_after_exclusion": 2010,
+      "n_excluded": 1000,
+      "sampler": "uniform",
+      "test_n": 1000,
+      "train_n": 1000,
+      "old_heldout_excluded": true
+    },
+    "PAS": {
+      "pool_total": 6395,
+      "pool_after_exclusion": 5395,
+      "n_excluded": 1000,
+      "sampler": "uniform",
+      "test_n": 1000,
+      "train_n": 1000,
+      "old_heldout_excluded": true
+    },
+    "AITA": {
+      "pool_total": 79990,
+      "pool_after_exclusion": 77408,
+      "n_excluded": 2582,
+      "sampler": "balanced",
+      "test_n": 1000,
+      "train_n": 1000,
+      "old_heldout_excluded": true,
+      "balanced_on": "is_asshole (500/500 per split)"
+    },
+    "AITA-NTA-FLIP": {
+      "pool_total": 1591,
+      "pool_after_exclusion": 1591,
+      "n_excluded": 0,
+      "sampler": "uniform",
+      "test_n": 1000,
+      "train_n": 500,
+      "old_heldout_excluded": false,
+      "overlap_new_vs_old_flip_heldout": 941,
+      "contamination_note": "Resampled from the full 1591-pair set with NO exclusion; overlaps the tuning eval. Treat FLIP as a fixed consistency benchmark, not an unseen held-out."
+    }
+  }
+}
